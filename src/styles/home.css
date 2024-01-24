@@ -1,0 +1,143 @@
+
+
+.navbar {
+    background-color: #007bff;
+}
+
+.navbar-brand {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.navbar-toggler-icon {
+    color: #ffffff;
+}
+
+.welSect {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('../assets/homeWel-bg.avif') no-repeat center center/cover;
+    color: #ffffff;
+    padding: 100px 0;
+    height: 70vh;
+}
+
+.welSect h2 {
+    font-size: 3rem;
+}
+
+.welSect p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.welSect button {
+    font-size: 1.25rem;
+    padding: 10px 20px;
+}
+#easyShareService {
+    background-color: #ffffff;
+    padding: 80px 0;
+}
+
+#easyShareService h2 {
+    color: #007bff;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+#chooseUs {
+    text-align: center;
+    padding: 20px;
+}
+
+#chooseUs img {
+    width: 80px;
+}
+#easyShareService .cardd{
+  background-color: rgb(255, 253, 253) !important;
+  box-shadow:  0 3px 8px #525457;
+  line-height: 25px;
+  height: 250px;
+}
+#easysharecontact {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 50px 0;
+}
+
+#easysharecontact h3 {
+    font-size: 2.5rem;
+}
+
+#easysharecontact ul {
+    list-style: none;
+    padding: 0;
+}
+
+#easysharecontact li {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.reg {
+    color: white;
+    background-color: rgba(104, 85, 224, 1);
+    
+  }
+  
+  .log {
+    color: rgb(104, 85, 224);
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(104, 85, 224, 1);
+  }
+  
+  .log, .reg{
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  font-weight: 600;
+  margin: 0 10px;
+  width: 200px;
+  padding: 10px 0;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+  transition: 0.4s;
+  text-align: center;
+  }
+
+  /* Footer.css */
+
+.footer {
+    background-color: #2c3e50;
+    padding: 20px 0;
+    color: #ecf0f1;
+  }
+  
+  .footer h4,
+  .footer h3 {
+    color: #ecf0f1;
+  }
+  
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-bottom {
+    background-color: #34495e;
+    padding: 10px 0;
+    color: #bdc3c7;
+  }
+  
+  .footer-bottom p {
+    margin: 0;
+  }
+  
+  .footer-bottom a {
+    color: #3498db;
+  }
+  

@@ -1,0 +1,58 @@
+body{
+    /* background:-webkit-repeating-radial-gradient(ellipse farthest-corner at bottom left, #734dff 0%, #c7adad 10%, #6d6db6 50%);
+background:-o-repeating-radial-gradient(ellipse farthest-corner at bottom left, #734dff 0%, #c7adad 10%, #6d6db6 50%);
+background:-moz-repeating-radial-gradient(ellipse farthest-corner at bottom left, #734dff 0%, #c7adad 10%, #6d6db6 50%);
+background:repeating-radial-gradient(ellipse farthest-corner at bottom left, #734dff 0%, #c7adad 10%, #6d6db6 50%); */
+    background-color: #f2f2f2 !important;
+    min-height: 60vw;
+}
+@media screen and (max-width: 600px){
+    body{
+        min-height: 100vh;
+
+    }
+}
+
+.login-img{
+    position: absolute;
+    left: 35%;
+    top: -14%;
+    background-color: #302e3f;
+    border-radius: 50%;
+   
+}
+
+.smallDiv{
+    height: 70px;
+    width: 240px;
+    /* background-color: white; */
+    /* color: #fff; */
+    
+    box-shadow: 0 .125rem .25rem rgb(167, 167, 167);
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* justify-content: s   pace-around; */
+}
+.smallDiv i {
+    font-size: 25px;
+    
+}
+.smallDiv p {
+    font-size: medium;
+    padding-top: 15px;
+}
+.smallDiv p:hover {
+    text-decoration: underline;
+}
+
+
+
+ 

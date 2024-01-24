@@ -1,0 +1,81 @@
+.custom-card {
+    width: 450px;
+    height: 300px;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 688px){
+    
+    .custom-card {
+        width: 100%;
+        height: 300px;
+        color: #fff;
+    }
+    .custom-card-no p{
+        font-size: 15px;
+        margin-top: 20px;
+    }
+}
+
+
+.custom-front {
+    
+    
+    background: #ff2c7d;
+    background-image: url("map.png"); /* fallback */
+    background-image: url("map.png"), linear-gradient(45deg, #0045c7, #00d4fa);
+    
+padding: 15px;
+    border-radius: 15px;
+    
+}
+
+.custom-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+.custom-card-no span{
+    font-size: 35px;
+    letter-spacing: 13px;
+}
+
+.custom-card-holder p{
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.custom-name p{
+    font-size: 18px !important;
+    font-style: italic;
+}
+
+
+
+.custom-card-cvv {
+    margin-top: 20px;
+}
+
+
+
+
+
+.custom-card-cvv p {
+    background: #fff;
+    color: #000;
+    font-size: 22px;
+    padding: 10px 20px;
+}
+
+.custom-card-text {
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+
+
