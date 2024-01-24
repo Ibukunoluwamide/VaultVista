@@ -84,7 +84,7 @@ const Register = () => {
       axios
         .post(`${backendUrl}/register`, values)
         .then((result) => {
-          console.log(result);
+          // console.log(result);
           if (result.data.status == true) {
             //  console.log(result.data);
             toast.success(result.data.message);

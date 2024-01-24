@@ -20,7 +20,7 @@ const Login = () => {
       password: yup.string().required("Password is required"),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      // console.log(values);
       axios
         .post(`${backendUrl}/login`, values)
         .then((result) => {

@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import Navbar from './Navbar';
 import userData from '../userData/userData';
+import Swal from 'sweetalert2';
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -20,51 +21,58 @@ const Profile = () => {
     // console.log(user);
     const formik = useFormik({
       initialValues: {
-        firstname: user.first_name,
-        middlename: user.middle_name,
-        lastname: user.last_name,
+        first_name: user.first_name,
+        middle_name: user.middle_name,
+        last_name: user.last_name,
         email: user.email,
-        phoneNumber: user.phone_number,
-        nationalId: user.national_id,
+        phone_number: user.phone_number,
+        national_id: user.national_id,
         country: user.country,
-        dateOfBirth: user.date_of_birth,
+        date_of_birth: user.date_of_birth,
         gender: user.gender,
-        accountnumber: user.account_number,
+        account_number: user.account_number,
+        id: user._id,
       },
       validationSchema: yup.object({
-        firstname: yup.string().required("First Name is required"),
-        middlename: yup.string(),
-        lastname: yup.string().required("Last Name is required"),
+        first_name: yup.string().required("First Name is required"),
+        middle_name: yup.string(),
+        last_name: yup.string().required("Last Name is required"),
         email: yup
           .string()
           .email("Invalid email address")
           .required("Email is required"),
-        phoneNumberNumber: yup.string().required("phoneNumber is required"),
-        nationalId: yup.string(),
+        phone_number: yup.string().required("Phone Number is required"),
+        national_id: yup.string(),
         country: yup.string().required("Country is required"),
-        dateOfBirth: yup.string(),
+        date_of_birth: yup.string(),
         gender: yup.string().required("Gender is required"),
       }),
       onSubmit: (values) => {
         console.log(values);
-        // axios.post(`${backendUrl}/updateprofile.php`, values)
-        //   .then((result) => {
-        //     console.log(result);
-        //     if (result.data.status == true) {
-        //       Swal.fire({
-        //         confirmButtonColor: "#3085d6",
-        //         text: result.data.message,
-        //         icon: "success",
-        //       });
-        //       navigate("/dashboard");
-        //     }
-        //   })
-        //   .catch((err) => {
-        //     console.log(err);
-        //   });
+        axios.post(`${backendUrl}/updateprofile`, values)
+          .then((result) => {
+              // console.log(result);
+              if (result.data.status == true) {
+                  Swal.fire({
+                      confirmButtonColor: "#3085d6",
+                      text: result.data.message,
+                      icon: "success",
+                    });
+                    navigate("/dashboard");
+            }else{
+              Swal.fire({
+                confirmButtonColor: "#3085d6",
+                text: result.data.message,
+                icon: "error",
+              });
+            }
+          })
+          .catch((err) => {
+              console.log(err);
+          });
       },
     });
-  
+ 
     return (
       <>
         <Navbar />
@@ -80,20 +88,20 @@ const Profile = () => {
                     <label className="profile_details_text">First Name:</label>
                     <input
                       type="text"
-                      name="firstname"
+                      name="first_name"
                       className={`form-control ${
-                        formik.touched.firstname && formik.errors.firstname
+                        formik.touched.first_name && formik.errors.first_name
                           ? "is-invalid"
                           : ""
                       }`}
-                      value={formik.values.firstname}
+                      value={formik.values.first_name}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       required
                     />
-                    {formik.touched.firstname && formik.errors.firstname && (
+                    {formik.touched.first_name && formik.errors.first_name && (
                       <div className="invalid-feedback">
-                        {formik.errors.firstname}
+                        {formik.errors.first_name}
                       </div>
                     )}
                   </div>
@@ -105,20 +113,20 @@ const Profile = () => {
                     <label className="profile_details_text">Middle Name:</label>
                     <input
                       type="text"
-                      name="middlename"
+                      name="middle_name"
                       className={`form-control ${
-                        formik.touched.middlename && formik.errors.middlename
+                        formik.touched.middle_name && formik.errors.middle_name
                           ? "is-invalid"
                           : ""
                       }`}
-                      value={formik.values.middlename}
+                      value={formik.values.middle_name}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       
                     />
-                    {formik.touched.middlename && formik.errors.middlename && (
+                    {formik.touched.middle_name && formik.errors.middle_name && (
                       <div className="invalid-feedback">
-                        {formik.errors.middlename}
+                        {formik.errors.middle_name}
                       </div>
                     )}
                   </div>
@@ -133,18 +141,18 @@ const Profile = () => {
                     type="text"
                     name="lastname"
                     className={`form-control ${
-                      formik.touched.lastname && formik.errors.lastname
+                      formik.touched.last_name && formik.errors.last_name
                         ? "is-invalid"
                         : ""
                     }`}
-                    value={formik.values.lastname}
+                    value={formik.values.last_name}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     required
                   />
-                  {formik.touched.lastname && formik.errors.lastname && (
+                  {formik.touched.last_name && formik.errors.last_name && (
                     <div className="invalid-feedback">
-                      {formik.errors.lastname}
+                      {formik.errors.last_name}
                     </div>
                   )}
                 </div>
@@ -184,22 +192,22 @@ const Profile = () => {
                     <label className="profile_details_text">Mobile Number:</label>
                     <input
                       type="tel"
-                      name="phoneNumber"
+                      name="phone_number"
                       className={`form-control ${
-                        formik.touched.phoneNumber && formik.errors.phoneNumber
+                        formik.touched.phone_number && formik.errors.phone_number
                           ? "is-invalid"
                           : ""
                       }`}
-                      value={formik.values.phoneNumber}
+                      value={formik.values.phone_number}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       required
                       pattern="[0-9]{10}"
                       disabled
                     />
-                    {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+                    {formik.touched.phone_number && formik.errors.phone_number && (
                       <div className="invalid-feedback">
-                        {formik.errors.phoneNumber}
+                        {formik.errors.phone_number}
                       </div>
                     )}
                   </div>
@@ -213,20 +221,20 @@ const Profile = () => {
                     <label className="profile_details_text">Date Of Birth:</label>
                     <input
                       type="date"
-                      name="dateOfBirth"
+                      name="date_of_birth"
                       className={`form-control ${
-                        formik.touched.dateOfBirth && formik.errors.dateOfBirth
+                        formik.touched.date_of_birth && formik.errors.date_of_birth
                           ? "is-invalid"
                           : ""
                       }`}
-                      value={formik.values.dateOfBirth}
+                      value={formik.values.date_of_birth}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       disabled
                     />
-                    {formik.touched.dateOfBirth && formik.errors.dateOfBirth && (
+                    {formik.touched.date_of_birth && formik.errors.date_of_birth && (
                       <div className="invalid-feedback">
-                        {formik.errors.dateOfBirth}
+                        {formik.errors.date_of_birth}
                       </div>
                     )}
                   </div>
@@ -300,19 +308,19 @@ const Profile = () => {
                     <label className="profile_details_text">National ID:</label>
                     <input
                       type="text"
-                      name="nationalId"
+                      name="national_id"
                       className={`form-control ${
-                        formik.touched.nationalId && formik.errors.nationalId
+                        formik.touched.national_id && formik.errors.national_id
                           ? "is-invalid"
                           : ""
                       }`}
-                      value={formik.values.nationalId}
+                      value={formik.values.national_id}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                     />
-                    {formik.touched.nationalId && formik.errors.nationalId && (
+                    {formik.touched.national_id && formik.errors.national_id && (
                       <div className="invalid-feedback">
-                        {formik.errors.nationalId}
+                        {formik.errors.national_id}
                       </div>
                     )}
                   </div>

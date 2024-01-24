@@ -124,8 +124,8 @@ const Transfer = () => {
     <Navbar/>
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-md-5">
-          <div className="center-wrap2 shadow p-3 rounded  text-white">
+        <div className="">
+          <div className="center-wrap2 shadow p-3 rounded col-md-5 m-auto text-white">
             <div className="card-header">
               <h4 className="card-title">Transfer Funds</h4>
             </div>

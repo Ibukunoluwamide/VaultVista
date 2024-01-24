@@ -46,7 +46,6 @@ h4 {
   border-radius: 5px;
   box-shadow: 0 .125rem .25rem rgb(236, 236, 236);
   position: relative;
-  z-index: -9999;
   top: 0.6in;
 }
 /*  */

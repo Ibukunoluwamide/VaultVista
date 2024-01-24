@@ -41,7 +41,7 @@ const copyAccountNumber = () => {
           </div>
           <div className="custom-card-no text-center d-flex align-items-center justify-content-center" >
             <span>{userDetail.account_number}</span>  
-            <span className="fas fa-copy"></span>          
+            <span className="fas fa-copy" onClick={copyAccountNumber}></span>          
           </div>
           <div className="custom-row custom-card-holder">
             <p>BALANCE</p>

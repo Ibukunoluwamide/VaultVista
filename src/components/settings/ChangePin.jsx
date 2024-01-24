@@ -17,7 +17,7 @@ const ChangePin = () => {
       current_pin: "",
       new_pin: "",
       confirm_pin: "",
-      accountnumber: user.accountnumber
+      id: user._id
     },
     validationSchema: yup.object({
       current_pin: yup
@@ -36,28 +36,39 @@ const ChangePin = () => {
     }),
     onSubmit: (values) => {
       // Handle form submission here
-      console.log(values);
-      axios
-        .post(`${backendUrl}/changepin.php`, values)
-        .then((result) => {
-          console.log(result);
-          if (result.data.status == true) {
-            Swal.fire({
-              confirmButtonColor: "#3085d6",
-              text: result.data.message,
-              icon: "success",
-            });
-          } else {
-            Swal.fire({
-              confirmButtonColor: "#3085d6",
-              text: result.data.message,
-              icon: "error",
-            });
-          }
+      // console.log(values);
+      if(values.new_pin=="1234"){
+        Swal.fire({
+          title: "Default PIN can't be used",
+          text: "Enter another PIN!",
+          icon: "error",
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "Ok"
         })
-        .catch((err) => {
-          console.log(err);
-        });
+      }else{
+
+        axios
+          .post(`${backendUrl}/changepin`, values)
+          .then((result) => {
+            // console.log(result);
+            if (result.data.status == true) {
+              Swal.fire({
+                confirmButtonColor: "#3085d6",
+                text: result.data.message,
+                icon: "success",
+              });
+            } else {
+              Swal.fire({
+                confirmButtonColor: "#3085d6",
+                text: result.data.message,
+                icon: "error",
+              });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     },
   });
 
@@ -70,7 +81,7 @@ const ChangePin = () => {
               type="password"
               name="current_pin"
               className="form-style"
-              placeholder="Current Pin"
+              placeholder="Current PIN"
               id="current_pin"
               autoComplete="off"
               onChange={formik.handleChange}
@@ -89,7 +100,7 @@ const ChangePin = () => {
               type="password"
               name="new_pin"
               className="form-style"
-              placeholder="New Pin"
+              placeholder="New PIN"
               id="new_pin"
               autoComplete="off"
               onChange={formik.handleChange}
@@ -108,7 +119,7 @@ const ChangePin = () => {
               type="password"
               name="confirm_pin"
               className="form-style"
-              placeholder="Confirm Pin"
+              placeholder="Confirm PIN"
               id="confirm_pin"
               autoComplete="off"
               onChange={formik.handleChange}

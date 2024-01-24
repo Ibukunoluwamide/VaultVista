@@ -31,7 +31,6 @@ const userData = () => {
                     localStorage.setItem('pinStatus', result.data.pinStatus)
                   }
               }else{
-                localStorage.removeItem('token')
                   navigate('/login')
               }
           }).catch((err) => {
@@ -39,6 +38,8 @@ const userData = () => {
           });
         }else{
            navigate('/login')
+           localStorage.removeItem('token')
+
         }
         
     }, [])

@@ -17,7 +17,7 @@ const ChangePassword = () => {
       current_password: '',
       new_password: '',
       confirm_password: '',
-      accountnumber: user.accountnumber
+      id: user._id
     },
     validationSchema: yup.object({
       current_password: yup.string().required('Current Password is required'),
@@ -28,11 +28,11 @@ const ChangePassword = () => {
     }),
     onSubmit: values => {
       // Handle form submission here
-      console.log(values);
+      // console.log(values);
       axios
-      .post(`${backendUrl}/changepassword.php`, values)
+      .post(`${backendUrl}/changepassword`, values)
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         if (result.data.status == true) {
           Swal.fire({
             confirmButtonColor: "#3085d6",
