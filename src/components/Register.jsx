@@ -107,7 +107,7 @@ const Register = () => {
       if (Object.keys(errors).length === 0) {
         formik.handleSubmit();
       } else {
-g        // console.log("Validation errors:", errors);
+    // console.log("Validation errors:", errors);
         Swal.fire({
           confirmButtonColor: "#3085d6",
           text: "Please fill in all required fields before proceeding.",
