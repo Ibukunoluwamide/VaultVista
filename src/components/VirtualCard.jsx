@@ -3,10 +3,10 @@ import userData from '../userData/userData';
 import '../styles/virtualcard.css'; 
 
 const VirtualCard = () => {
-  const [userDetail, setUserDetail] = useState(JSON.parse(localStorage["vaultvista_user"]) || null); 
+  const {userDetail, pinStatus} = userData()
   useEffect(() => {
-    setUserDetail(JSON.parse(localStorage["vaultvista_user"]))
-  },)
+   console.log(userDetail);
+  },[])
   
   // console.log(userDetail);
   

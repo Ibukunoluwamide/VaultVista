@@ -67,9 +67,9 @@ const Home = () => {
                 <Link to="/register" className="reg  btn-primary btn-lg">
                   Register
                 </Link>
-                <a href="/login" className="log btn-outline-info btn-lg">
+                <Link to="/login" className="log btn-outline-info btn-lg">
                   Login
-                </a>
+                </Link>
               </div>
             </div>
           </div>
