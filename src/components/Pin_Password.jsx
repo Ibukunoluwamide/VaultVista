@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './Navbar'
 import ChangePassword from './settings/ChangePassword'
-import ChangePin from './settings/changepin'
+import ChangePin from './settings/ChangePin'
 
 const Pin_Password = () => {
   return (
