@@ -15,6 +15,7 @@ const DashboardNavbar = () => {
   const logout = () => {
     localStorage.removeItem("vaultvista_id");
     localStorage.removeItem("vaultvista_user");
+    localStorage.removeItem("token");
     navigate("/login");
   };
   const [isNavbarOpen, setNavbarOpen] = useState(false);

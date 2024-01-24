@@ -18,7 +18,6 @@ import BuyData from './components/subscriptions/BuyData';
 import BuyAirtime from './components/subscriptions/BuyAirtime';
 
 function App() {
-  const token = localStorage.token
   return (
    <>
    <Routes>
@@ -27,7 +26,7 @@ function App() {
     <Route path="/home" element={<Navigate to="/"/>} />
     <Route path='/register' element={<Register/>} />
     <Route path='/login' element={<Login/>} />
-    <Route path='/dashboard' element={token?<Dashboard/>:<Navigate to="/login"/>}/>
+    <Route path='/dashboard' element={<Dashboard/>}/>
     <Route path='/profile' element={<Profile/>} />
     <Route path='/transfer' element={<Transfer/>} />
     <Route path='/changepin' element={<Pin_Password/>} />

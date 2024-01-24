@@ -16,6 +16,7 @@ const Dashboard = () => {
      let backendUrl = BackendUrl()
    useEffect(() => {
     const pinStatus = JSON.parse(localStorage['pinStatus'] || null)
+    
     // console.log(pinStatus);
     if (pinStatus==true) {
       Swal.fire({
@@ -28,11 +29,7 @@ cancelButtonColor: "#d33",
         icon: 'warning'
       }).then((result) => {
         if (result.isConfirmed) {
-          localStorage.removeItem('pinStatus')
           navigate('/changepin')
-        }else{
-          localStorage.removeItem('pinStatus')
-
         }
       });
     }

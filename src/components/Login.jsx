@@ -5,13 +5,14 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import BackendUrl from "../userData/BackendUrl";
 import { toast } from "react-toastify";
+import userData from "../userData/userData";
 
 const Login = () => {
   const backendUrl = BackendUrl();
   const navigate = useNavigate();
-
-  const formik = useFormik({
-    initialValues: {
+  const { userDetail, pinStatus }= userData()
+   const formik = useFormik({
+     initialValues: {
       phoneNumber: "",
       password: "",
     },
@@ -22,13 +23,19 @@ const Login = () => {
     onSubmit: (values) => {
       // console.log(values);
       axios
-        .post(`${backendUrl}/login`, values)
-        .then((result) => {
+      .post(`${backendUrl}/login`, values)
+      .then((result) => {
+          console.log(userDetail);
+          console.log(pinStatus);
           console.log(result.data);
           if (result.data.status == true) {
             localStorage.setItem('token', result.data.token);
             localStorage.setItem('userId', result.data.userId);
-            navigate("/dashboard");
+            localStorage.setItem('vaultvista_user', JSON.stringify(userDetail))
+            localStorage.setItem('pinStatus', JSON.stringify(true));
+            // console.log(userDetail);
+
+            navigate("/dashboard");           
             toast.success(result.data.message);
           } else {
             toast.error(result.data.message);
@@ -37,13 +44,13 @@ const Login = () => {
         .catch((err) => {
           console.log(err);
         });
-    },
+      },
   });
 
   return (
     <>
-      <div className="card-front text-white text-center mt-4">
-        <div className="center-wrap m-auto col-md-4 p-md-3 p-2 mt-5">
+      <div className="card-front text-white text-center mt-5 pt-4 pt-md-3">
+        <div className="center-wrap m-auto col-md-4 p-md-3 p-2 mt-5" style={{height: '70vh'}}>
           <div className="section">
             
             <img

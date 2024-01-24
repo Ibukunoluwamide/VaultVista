@@ -5,9 +5,10 @@ import Swal from 'sweetalert2';
 import BackendUrl from './BackendUrl';
 
 const userData = () => {
-    const navigate = useNavigate()
-    let backendUrl = BackendUrl()
-    const [userDetail, setUserDetail] = useState({})
+  const navigate = useNavigate()
+  let backendUrl = BackendUrl()
+  const [userDetail, setUserDetail] = useState({})
+  const [pinStatus, setpinStatus] = useState(null)
     useEffect(() => {
         const token = localStorage.getItem('token')
         const userId = localStorage.getItem('userId')
@@ -28,7 +29,7 @@ const userData = () => {
                   setUserDetail(result.data.userData)
                   localStorage.setItem('vaultvista_user', JSON.stringify(result.data.userData))
                   if (result.data.pinStatus==true) {
-                    localStorage.setItem('pinStatus', result.data.pinStatus)
+                    setpinStatus(result.data.pinStatus)
                   }
               }else{
                   navigate('/login')
@@ -43,7 +44,7 @@ const userData = () => {
         }
         
     }, [])
-    return userDetail
+    return {userDetail, pinStatus}
     
   
 }

@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import userData from '../userData/userData';
 import '../styles/virtualcard.css'; 
 
 const VirtualCard = () => {
-  const userDetail = userData()
+  const [userDetail, setUserDetail] = useState(JSON.parse(localStorage["vaultvista_user"]) || null); 
+  // const {userDetail} = userData()
+  useEffect(() => {
+    setUserDetail(JSON.parse(localStorage["vaultvista_user"]))
+  },)
+  
   // console.log(userDetail);
   
 // Format as currency

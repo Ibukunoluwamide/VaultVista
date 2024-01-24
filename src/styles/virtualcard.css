@@ -23,8 +23,8 @@
     
     
     background: #ff2c7d;
-    background-image: url("map.png"); /* fallback */
-    background-image: url("map.png"), linear-gradient(45deg, #0045c7, #00d4fa);
+    background-image: url("/map.png"); /* fallback */
+    background-image: url("/map.png"), linear-gradient(45deg, #0045c7, #00d4fa);
     
 padding: 15px;
     border-radius: 15px;
