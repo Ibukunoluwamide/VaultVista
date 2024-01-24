@@ -17,7 +17,7 @@ const Home = () => {
           </Link>
            
           
-            <span className="navbar-toggler-icon fs-3" data-bs-toggle="collapse"
+            <span className="navbar-toggler-icon fs-3 d-md-none" data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
             aria-controls="navbarNav"
             aria-expanded="false"
