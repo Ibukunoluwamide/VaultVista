@@ -4,7 +4,6 @@ import '../styles/virtualcard.css';
 
 const VirtualCard = () => {
   const [userDetail, setUserDetail] = useState(JSON.parse(localStorage["vaultvista_user"]) || null); 
-  // const {userDetail} = userData()
   useEffect(() => {
     setUserDetail(JSON.parse(localStorage["vaultvista_user"]))
   },)

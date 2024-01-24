@@ -25,9 +25,9 @@ const Login = () => {
       axios
       .post(`${backendUrl}/login`, values)
       .then((result) => {
-          console.log(userDetail);
-          console.log(pinStatus);
-          console.log(result.data);
+          // console.log(userDetail);
+          // console.log(pinStatus);
+          // console.log(result.data);
           if (result.data.status == true) {
             localStorage.setItem('token', result.data.token);
             localStorage.setItem('userId', result.data.userId);
