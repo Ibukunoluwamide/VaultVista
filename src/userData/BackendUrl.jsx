@@ -1,7 +1,7 @@
 import React from 'react'
 
 const BackendUrl = () => {
-    let backendUrl = 'http://localhost:3000'
+    let backendUrl = 'https://vaultvista-server.onrender.com'
    return backendUrl
 }
 
