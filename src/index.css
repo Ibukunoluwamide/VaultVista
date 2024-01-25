@@ -8,6 +8,7 @@
   transition: all 200ms linear;
   text-decoration: none;
   color: #5d97e4;
+  padding: 10px !important;
 }
 .a:hover {
 	text-decoration: underline;
@@ -26,17 +27,15 @@ h4 {
 
 .card-front{
   width: 100%;
-  min-height: 100%;
   background-position: center;
   background-repeat: no-repeat;
-
-  margin-top: 20px;
+  
 }
 .center-wrap{
   background-color: #2a2b38;
+  min-height: 75vh;
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
-  backdrop-filter: blur(5px);
-  border-radius: 5px;
+  border-radius: 15px;
   box-shadow: 0 .125rem .25rem rgb(236, 236, 236);
 }
 .center-wrap2{

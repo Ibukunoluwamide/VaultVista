@@ -118,14 +118,14 @@ const Register = () => {
   };
   return (
     <>
-      <div className="card-front text-white text-center ">
+      <div className="card-front text-white text-center container p-3">
         <div className="center-wrap m-auto p-md-3 p-2 shadow col-md-5">
           <div className="section">
             <img
               src="/avatar.svg"
               alt=""
-              className="login-im"
-              style={{ width: "130px" }}
+              className=""
+              style={{ width: "130px"}}
             />
             <h4 className="mb-4">Register</h4>
             <p>

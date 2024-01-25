@@ -111,7 +111,9 @@ a {
 }
 
 .show {
-  left: 0
+  left: 0;
+  width: calc(var(--nav-width) + 156px)
+
 }
 
 .body-pd {

@@ -5,14 +5,15 @@
     cursor: pointer;
 }
 
-@media only screen and (max-width: 688px){
-    
+@media only screen and (max-width: 688px) {
+
     .custom-card {
         width: 100%;
         height: 300px;
         color: #fff;
     }
-    .custom-card-no p{
+
+    .custom-card-no p {
         font-size: 15px;
         margin-top: 20px;
     }
@@ -20,15 +21,16 @@
 
 
 .custom-front {
-    
-    
+
+
     background: #ff2c7d;
-    background-image: url("/map.png"); /* fallback */
+    background-image: url("/map.png");
+    /* fallback */
     background-image: url("/map.png"), linear-gradient(45deg, #0045c7, #00d4fa);
-    
-padding: 15px;
+
+    padding: 15px;
     border-radius: 15px;
-    
+
 }
 
 .custom-row {
@@ -39,18 +41,18 @@ padding: 15px;
 
 
 
-.custom-card-no span{
+.custom-card-no span {
     font-size: 35px;
-    letter-spacing: 13px;
+    letter-spacing: 10px;
 }
 
-.custom-card-holder p{
+.custom-card-holder p {
     font-size: 20px;
     margin-top: 20px;
     font-weight: bold;
 }
 
-.custom-name p{
+.custom-name p {
     font-size: 18px !important;
     font-style: italic;
 }
@@ -76,6 +78,3 @@ padding: 15px;
     margin-top: 30px;
     font-size: 14px;
 }
-
-
-

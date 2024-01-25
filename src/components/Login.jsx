@@ -10,9 +10,9 @@ import userData from "../userData/userData";
 const Login = () => {
   const backendUrl = BackendUrl();
   const navigate = useNavigate();
-  const { userDetail, pinStatus }= userData()
-   const formik = useFormik({
-     initialValues: {
+
+  const formik = useFormik({
+    initialValues: {
       phoneNumber: "",
       password: "",
     },
@@ -23,19 +23,13 @@ const Login = () => {
     onSubmit: (values) => {
       // console.log(values);
       axios
-      .post(`${backendUrl}/login`, values)
-      .then((result) => {
-          // console.log(userDetail);
-          // console.log(pinStatus);
+        .post(`${backendUrl}/login`, values)
+        .then((result) => {
           // console.log(result.data);
           if (result.data.status == true) {
             localStorage.setItem('token', result.data.token);
             localStorage.setItem('userId', result.data.userId);
-            localStorage.setItem('vaultvista_user', JSON.stringify(userDetail))
-            localStorage.setItem('pinStatus', JSON.stringify(true));
-            // console.log(userDetail);
-
-            navigate("/dashboard");           
+            navigate("/dashboard");
             toast.success(result.data.message);
           } else {
             toast.error(result.data.message);
@@ -44,19 +38,18 @@ const Login = () => {
         .catch((err) => {
           console.log(err);
         });
-      },
+    },
   });
-
   return (
     <>
-      <div className="card-front text-white text-center mt-5 pt-4 pt-md-3">
-        <div className="center-wrap m-auto col-md-4 p-md-3 p-2 mt-5" style={{height: '70vh'}}>
+      <div className="card-front text-white text-center pt-md-3 container">
+        <div className="center-wrap m-auto col-md-4 p-md-3 p-3 mt-5" >
           <div className="section">
             
             <img
               src="/login.svg"
               alt=""
-              className="login-im"
+              className="login-im mt-4"
               style={{ width: "80px" }}
             />
             <h4 className="pb-3 pt-3">Log In</h4>
@@ -68,7 +61,6 @@ const Login = () => {
                   className="form-style"
                   placeholder="Phone number"
                   id="logphoneNumber"
-                  autoComplete="off"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.phoneNumber}
@@ -115,7 +107,7 @@ const Login = () => {
               </button>
             </form>
             <div className="pt-3">
-              <Link to="/register" className="ps-3 a">
+              <Link to="/register" className="ps-3 a ">
                 <span>Not a member?</span>{" "}
               </Link>
             </div>

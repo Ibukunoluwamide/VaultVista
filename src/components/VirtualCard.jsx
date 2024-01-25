@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import userData from '../userData/userData';
 import '../styles/virtualcard.css'; 
+import { useNavigate } from 'react-router-dom';
 
-const VirtualCard = () => {
-  const {userDetail, pinStatus} = userData()
+const VirtualCard = (props) => {
+  const navigate = useNavigate()
+  const { userDetail = {} } = props;
   useEffect(() => {
-   console.log(userDetail);
-  },[])
+      console.log(userDetail);
+    },[])
+    const formattedAmount = new Intl.NumberFormat('en-NG', {
+      style: 'currency',
+      currency: 'NGN',
+    }).format(userDetail.accountBal)
+  
   
   // console.log(userDetail);
   
 // Format as currency
-const formattedAmount = new Intl.NumberFormat('en-NG', {
-  style: 'currency',
-  currency: 'NGN',
-}).format(userDetail.accountBal);
 const copyAccountNumber = () => {
   const accountNumber = userDetail?.account_number;
 
@@ -29,7 +32,7 @@ const copyAccountNumber = () => {
     <>
             {
               userDetail && (
-    <div className="custom-card">
+    <div className="custom-card container">
       <div className="custom-card-inner">
         <div className="custom-front">
           {/* <div className="custom-row">

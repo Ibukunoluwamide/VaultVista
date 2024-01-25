@@ -16,6 +16,7 @@ import Profile from './components/Profile';
 import Subscriptions from './components/Subscriptions';
 import BuyData from './components/subscriptions/BuyData';
 import BuyAirtime from './components/subscriptions/BuyAirtime';
+import Test from './components/Test';
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
     <Route path='/changepin' element={<Pin_Password/>} />
     <Route path='/buyData' element={<BuyData/>} />
     <Route path='/buyAirtime' element={<BuyAirtime/>} />
-    {/* <Route path='/test' element={<Test  />} /> */}
+    <Route path='/test' element={<Test />} />
    </Routes>
    <ToastContainer
 position="top-center"
