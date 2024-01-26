@@ -13,14 +13,7 @@ background:repeating-radial-gradient(ellipse farthest-corner at bottom left, #73
     }
 }
 
-.login-img{
-    position: absolute;
-    left: 35%;
-    top: -14%;
-    background-color: #302e3f;
-    border-radius: 50%;
-   
-}
+
 
 .smallDiv{
     height: 70px;

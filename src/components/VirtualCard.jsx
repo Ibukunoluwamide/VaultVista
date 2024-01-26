@@ -32,7 +32,7 @@ const copyAccountNumber = () => {
     <>
             {
               userDetail && (
-    <div className="custom-card container">
+    <div className="custom-card">
       <div className="custom-card-inner">
         <div className="custom-front">
           {/* <div className="custom-row">

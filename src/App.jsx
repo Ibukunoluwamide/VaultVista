@@ -17,8 +17,12 @@ import Subscriptions from './components/Subscriptions';
 import BuyData from './components/subscriptions/BuyData';
 import BuyAirtime from './components/subscriptions/BuyAirtime';
 import Test from './components/Test';
+import { useEffect, useState } from 'react';
+import History from './components/History';
 
 function App() {
+ 
+  
   return (
    <>
    <Routes>
@@ -31,8 +35,9 @@ function App() {
     <Route path='/profile' element={<Profile/>} />
     <Route path='/transfer' element={<Transfer/>} />
     <Route path='/changepin' element={<Pin_Password/>} />
-    <Route path='/buyData' element={<BuyData/>} />
-    <Route path='/buyAirtime' element={<BuyAirtime/>} />
+    <Route path='/buy-data' element={<BuyData/>} />
+    <Route path='/buy-airtime' element={<BuyAirtime/>} />
+    <Route path='/history' element={<History/>} />
     <Route path='/test' element={<Test />} />
    </Routes>
    <ToastContainer

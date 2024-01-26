@@ -11,7 +11,7 @@ import VirtualCard from "./VirtualCard";
 const Dashboard = () => {
   const navigate = useNavigate();
   const [userDetail, setUserDetail] = useState({});
-  const [pinStatus, setpinStatus] = useState("");
+  const [imgFile, setImgFile] = useState("")
   let backendUrl = BackendUrl();
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -27,30 +27,25 @@ const Dashboard = () => {
         })
 
         .then((result) => {
-          console.log(result.data);
+          // console.log(result.data);
           if (result.data.status == true) {
             setUserDetail(result.data.userData);
-            console.log(userDetail);
+            // console.log(userDetail);
             localStorage.setItem(
               "vaultvista_user",
               JSON.stringify(result.data.userData)
             );
             if (result.data.pinStatus == true) {
-              setpinStatus(true);
-              console.log(pinStatus);
+              // console.log(pinStatus);
               Swal.fire({
-                title: result.data.message,
-                text: "Set Pin?",
+                title: "Transaction PIN not set! ",
+                text: "Set your transaction PIN immediately in the settings.",
                 showCancelButton: true,
                 confirmButtonText: "Ok",
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
                 icon: "warning",
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  navigate("/changepin");
-                }
-              });
+              })
             }
           } else {
             navigate("/login");
@@ -65,36 +60,31 @@ const Dashboard = () => {
   }, []);
 
   const uploadImage = (e) => {
-    const formData = new FormData();
-    const accNo = userDetail.account_number;
-    formData.append("image", e.target.files[0]);
-    formData.append("accountnumber", accNo);
+    // console.log(e.target.files[0]);
+    const file = e.target.files[0];
+   
+    const reader = new FileReader();
 
-    axios
-      .post(`${backendUrl}/uploadImage.php`, formData)
-      .then((response) => {
-        if (response.data.status == true) {
-          Swal.fire({
-            confirmButtonColor: "#3085d6",
-            text: response.data.message,
-            icon: "success",
-          });
-        } else {
-          Swal.fire({
-            confirmButtonColor: "#3085d6",
-            text: response.data.message,
-            icon: "error",
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    reader.onload = () => {
+        // console.log(reader.result)
+       setImgFile(reader.result)
+    };
+
+    reader.readAsDataURL(file);
+    axios.post(`${backendUrl}/uploadImage`, {file: imgFile, id: userDetail._id})
+    .then((result) => {
+      window.location.reload();
+    }).catch((err) => {
+      
+    });
+
+
+   
   };
 
   return (
     <div>
-      <Navbar />
+      <Navbar userDetail={userDetail}/>
       <main id="dash">
         <section className="shadow-sm rounded bg-white">
           <div
@@ -103,7 +93,7 @@ const Dashboard = () => {
           >
             <VirtualCard userDetail={userDetail} />
 
-            <div className="mt-3  m-auto mt-md-0 m-md-0 container">
+            <div className="mt-3 col-md-4  m-auto mt-md-0 m-md-0 container">
               <label className="custum-file-upload" htmlFor="file">
                 <div className="icon">
                   <svg
@@ -145,47 +135,7 @@ const Dashboard = () => {
           </div>
         </section>
         <div class="my-3 p-3 bg-body rounded shadow-sm">
-          <h6 class="border-bottom pb-2 mb-0">More Services</h6>
-
-          <div class="d-flex text-body-secondary pt-3">
-            <i class="fas fa-tv fa-2x me-2 text-primary"></i>
-            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-              <div class="d-flex justify-content-between align-items-center">
-                <strong class="text-gray-dark">Cable Subscription</strong>
-                <Link to="">
-                  <button className="btn btn-primary">Check</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div class="d-flex text-body-secondary pt-3">
-            <i class="fas fa-mobile-alt fa-2x me-2 text-success"></i>
-            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-              <div class="d-flex justify-content-between align-items-center">
-                <strong class="text-gray-dark">Airtime to Cash</strong>
-                <Link to="">
-                  <button className="btn btn-primary">Check</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div class="d-flex text-body-secondary pt-3">
-            <i class="fas fa-bolt fa-2x me-2 text-warning"></i>
-            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-              <div class="d-flex justify-content-between align-items-center">
-                <strong class="text-gray-dark">Electricity Bills</strong>
-                <Link to="">
-                  <button className="btn btn-primary">Check</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="my-3 p-3 bg-body rounded shadow-sm">
-          <h6 class="border-bottom pb-2 mb-0">Recent updates</h6>
+          <h6 class="border-bottom pb-2 mb-0">Recent Notification</h6>
           <div class="d-flex text-body-secondary pt-3">
             <svg
               class="bd-placeholder-img flex-shrink-0 me-2 rounded"
@@ -258,9 +208,50 @@ const Dashboard = () => {
             </p>
           </div>
           <small class="d-block text-end mt-3">
-            <a href="#">All updates</a>
+            <a href="#">All notifications</a>
           </small>
         </div>
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
+          <h6 class="border-bottom pb-2 mb-0">More Services</h6>
+
+          <div class="d-flex text-body-secondary pt-3">
+            <i class="fas fa-tv fa-2x me-2 text-primary"></i>
+            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+              <div class="d-flex justify-content-between align-items-center">
+                <strong class="text-gray-dark">Cable Subscription</strong>
+                <Link to="">
+                  <button className="btn btn-primary">Check</button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex text-body-secondary pt-3">
+            <i class="fas fa-mobile-alt fa-2x me-2 text-success"></i>
+            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+              <div class="d-flex justify-content-between align-items-center">
+                <strong class="text-gray-dark">Airtime to Cash</strong>
+                <Link to="">
+                  <button className="btn btn-primary">Check</button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex text-body-secondary pt-3">
+            <i class="fas fa-bolt fa-2x me-2 text-warning"></i>
+            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+              <div class="d-flex justify-content-between align-items-center">
+                <strong class="text-gray-dark">Electricity Bills</strong>
+                <Link to="">
+                  <button className="btn btn-primary">Check</button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
       </main>
     </div>
   );

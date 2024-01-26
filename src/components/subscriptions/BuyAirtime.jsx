@@ -1,7 +1,10 @@
 import { useFormik } from 'formik';
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import DashboardNavbar from '../Navbar';
 
 const BuyAirtime = () => {
+  const navigate = useNavigate()
       // Formik configuration for Buy Airtime modal
   const buyAirtimeFormik = useFormik({
     initialValues: {
@@ -16,11 +19,15 @@ const BuyAirtime = () => {
       console.log("Buy Airtime Form Values:", values);
     },
   });
+  const closeBtn = ()=>{
+    navigate('/dashboard')
+  }
   return (
     <>
+    <DashboardNavbar/>
            <div
-        className="modal show"
-        style={{ display: 'block', width: '100%'}}
+        className="modal show mt-5"
+        style={{ display: 'block', position: 'static', width: '100%'}}
       
       >
         <div className="modal-dialog">
@@ -32,8 +39,7 @@ const BuyAirtime = () => {
               <button
                 type="button"
                 className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
+                  onClick={closeBtn}
               ></button>
             </div>
             <div className="modal-body">
@@ -112,7 +118,7 @@ const BuyAirtime = () => {
               <button
                 type="button"
                 className="btn btn-secondary"
-                data-bs-dismiss="modal"
+                onClick={closeBtn}
               >
                 Close
               </button>
