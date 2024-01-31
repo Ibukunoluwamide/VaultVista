@@ -17,7 +17,6 @@ import Subscriptions from './components/Subscriptions';
 import BuyData from './components/subscriptions/BuyData';
 import BuyAirtime from './components/subscriptions/BuyAirtime';
 import Test from './components/Test';
-import { useEffect, useState } from 'react';
 import History from './components/History';
 
 function App() {

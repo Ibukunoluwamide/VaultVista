@@ -7,7 +7,6 @@ const Subscriptions = () => {
 
 
 
-
   return (
     <section className="container">
   <div className="row gap-2">
@@ -31,6 +30,21 @@ const Subscriptions = () => {
       <i className="fas fa-history" style={{ color: '#33FF57' }}></i>
       <p>History</p>
     </Link>
+  </div>
+  <div className="d-flex  gap-3 justify-content-around mt-5">
+    <Link to="/dashboard" className="smallDiv2 pt-3" >
+      <i className="fas fa-sack-dollar" style={{ color: '#5733FF' }}></i>
+      <p>Rewards</p>
+    </Link>
+    <Link to='/transfer' className="smallDiv2 pt-3" >
+      <i className="fas fa-university" style={{ color: '#2e2e2e' }}></i>
+      <p>To VaultVista</p>
+    </Link>
+    <Link to="/transfer" className="smallDiv2  pt-3" >
+      <i className="fas fa-vault" style={{ color: '#FF5733' }}></i>
+      <p>To Banks</p>
+    </Link>
+
   </div>
 </section>
 

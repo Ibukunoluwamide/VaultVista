@@ -1,45 +1,54 @@
-import { useFormik } from 'formik';
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
-import DashboardNavbar from '../Navbar';
+import { useFormik } from "formik";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import DashboardNavbar from "../Navbar";
 
 const BuyAirtime = () => {
-  const navigate = useNavigate()
-      // Formik configuration for Buy Airtime modal
+  const navigate = useNavigate();
+  const networkOptions = ["MTN", "Airtel", "GLO", "9mobile"];
+
+  // Formik configuration for Buy Airtime modal
   const buyAirtimeFormik = useFormik({
     initialValues: {
       network: "",
-      type: "",
+      type: "VTU",
       amount: "",
       phoneNumber: "",
       pin: "",
     },
     onSubmit: (values) => {
       // Handle form submission logic for Buy Airtime
-      console.log("Buy Airtime Form Values:", values);
+      // console.log("Buy Airtime Form Values:", values);
+      Swal.fire({
+        title: "Transfer successful",
+        text: `₦${values.amount} was successfully to ${values.phoneNumber}`,
+        icon: "success",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Ok"
+      })
     },
   });
-  const closeBtn = ()=>{
-    navigate('/dashboard')
-  }
+  const closeBtn = () => {
+    navigate("/dashboard");
+  };
   return (
     <>
-    <DashboardNavbar/>
-           <div
+      <DashboardNavbar />
+      <div
         className="modal show mt-5"
-        style={{ display: 'block', position: 'static', width: '100%'}}
-      
+        style={{ display: "block", position: "static", width: "100%" }}
       >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="buyAirtimeLabel">
-              Airtime TopUp
+                Airtime TopUp
               </h1>
               <button
                 type="button"
                 className="btn-close"
-                  onClick={closeBtn}
+                onClick={closeBtn}
               ></button>
             </div>
             <div className="modal-body">
@@ -49,14 +58,23 @@ const BuyAirtime = () => {
                   <label htmlFor="network" className="form-label">
                     Network
                   </label>
-                  <input
-                    type="text"
+                  <select
                     className="form-control"
-                    id="network"
+                    id="dataNetwork"
                     name="network"
                     onChange={buyAirtimeFormik.handleChange}
                     value={buyAirtimeFormik.values.network}
-                  />
+                    required
+                  >
+                    <option value="" disabled>
+                      Select Network
+                    </option>
+                    {networkOptions.map((network) => (
+                      <option key={network} value={network}>
+                        {network}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 <div className="mb-3">
@@ -70,6 +88,7 @@ const BuyAirtime = () => {
                     name="type"
                     onChange={buyAirtimeFormik.handleChange}
                     value={buyAirtimeFormik.values.type}
+                    disabled
                   />
                 </div>
 
@@ -84,6 +103,7 @@ const BuyAirtime = () => {
                     name="amount"
                     onChange={buyAirtimeFormik.handleChange}
                     value={buyAirtimeFormik.values.amount}
+                    required
                   />
                 </div>
 
@@ -92,12 +112,13 @@ const BuyAirtime = () => {
                     Phone Number
                   </label>
                   <input
-                    type="text"
+                    type="tel"
                     className="form-control"
                     id="phoneNumber"
                     name="phoneNumber"
                     onChange={buyAirtimeFormik.handleChange}
                     value={buyAirtimeFormik.values.phoneNumber}
+                    required
                   />
                 </div>
 
@@ -112,20 +133,21 @@ const BuyAirtime = () => {
                     name="pin"
                     onChange={buyAirtimeFormik.handleChange}
                     value={buyAirtimeFormik.values.pin}
+                    required
                   />
                 </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={closeBtn}
-              >
-                Close
-              </button>
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-            </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={closeBtn}
+                  >
+                    Close
+                  </button>
+                  <button type="submit" className="btn btn-primary">
+                    Proceed
+                  </button>
+                </div>
               </form>
               {/* End Form */}
             </div>
@@ -133,7 +155,7 @@ const BuyAirtime = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default BuyAirtime
+export default BuyAirtime;

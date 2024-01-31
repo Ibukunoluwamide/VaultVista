@@ -11,16 +11,26 @@ background:repeating-radial-gradient(ellipse farthest-corner at bottom left, #73
         min-height: 100vh;
 
     }
+    .smallDiv2{
+        height: 20vh !important;
+        width: 100vh !important;
+        box-shadow: 0 .125rem .25rem rgb(167, 167, 167);
+        padding: 10px;
+        text-align: center;
+        border-radius: 8px;
+        cursor: pointer;
+        text-decoration: none;
+        text-transform: capitalize;
+        border-radius: 50% !important;
+        display: block !important;
+    }
 }
 
 
 
 .smallDiv{
     height: 70px;
-    width: 240px;
-    /* background-color: white; */
-    /* color: #fff; */
-    
+    width: 240px;    
     box-shadow: 0 .125rem .25rem rgb(167, 167, 167);
     padding: 10px;
     text-align: center;
@@ -32,19 +42,35 @@ background:repeating-radial-gradient(ellipse farthest-corner at bottom left, #73
     align-items: center;
     justify-content: center;
     gap: 10px;
-    /* justify-content: s   pace-around; */
 }
-.smallDiv i {
+.smallDiv i, .smallDiv2 i {
     font-size: 25px;
     
 }
-.smallDiv p {
+.smallDiv p, .smallDiv2 p {
     font-size: medium;
     padding-top: 15px;
 }
-.smallDiv p:hover {
+.smallDiv p:hover, .smallDiv2 p:hover {
     text-decoration: underline;
 }
+
+.smallDiv2{
+    height: 15vh;
+    width: 12vw;  
+    box-shadow: 0 .125rem .25rem rgb(167, 167, 167);
+    padding: 10px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: capitalize;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
 
 
 
